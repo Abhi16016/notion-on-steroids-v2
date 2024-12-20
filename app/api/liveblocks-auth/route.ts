@@ -1,7 +1,11 @@
-import { liveblocks } from "@/lib/liveblocks";
+import { Liveblocks } from "@liveblocks/node";
 import { getUserColor } from "@/lib/utils";
 import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
+
+const liveblocks = new Liveblocks({
+  secret: process.env.LIVEBLOCKS_SECRET_KEY!,
+});
 
 export async function POST(request: Request) {
   const clerkUser = await currentUser();
